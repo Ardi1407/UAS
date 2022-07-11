@@ -6,6 +6,7 @@ const User = require("../models/userModel");
 // @desc    Register user
 // @route   POST /api/users
 // @access  Public
+
 const registerUser = asyncHandler(async (req, res) => {
     const { name, email, password } = req.body;
     if (!name || !email || !password) {
@@ -71,6 +72,7 @@ const loginUser = asyncHandler(async (req, res) => {
 // @route   GET /api/users/me
 // @access  Private
 const getMe = asyncHandler(async (req, res) => {
+    res.json({message: "User data display"});
     const { _id, name, email } = await User.findById(req.user.id);
 
   res.status(200).json({
